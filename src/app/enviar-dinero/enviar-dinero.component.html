@@ -1,0 +1,102 @@
+
+<main>
+   <!--spinner-->
+    <div class="spinner-overlay" *ngIf="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <main>
+      <div class="title-container">
+          <h3 *ngIf="!mostrarAgregarTarjeta">Selecciona tarjeta agregada</h3>
+          <h3 *ngIf="mostrarAgregarTarjeta">Agregar Tarjeta</h3>
+          <div class="balance-toggle">           
+              <img *ngIf="mostrarAgregarTarjeta" style="width: 32px;" src="assets/img/tarjeta.png" alt="Emoji de Tarjeta"> 
+          </div>
+      </div> 
+  
+      <div class="tarjetas-container">
+        <!-- Lista de tarjetas -->
+        <div class="tarjetas-lista">
+          <div *ngFor="let tarjeta of tarjetaInfoByIdUser" class="account-card" [ngClass]="{'active': tarjeta === tarjetaActiva}" (click)="seleccionarTarjeta(tarjeta)">
+            <img src="assets/img/banco.png" alt="Banco Icon">
+            <h5>{{ tarjeta.banco }}</h5>
+            
+          </div>
+        </div>
+      
+        <!-- Tarjeta activa -->
+        <div class="tarjeta-activa" *ngIf="tarjetaActiva">
+          <div class="title-container">
+            <h3 *ngIf="!mostrarAgregarTarjeta">Tarjeta Activa</h3>         
+            <div class="balance-toggle">
+                <button *ngIf="!mostrarAgregarTarjeta" id="toggle-button" (click)="toggleVisibility()">{{ hideBalance ? '😑' : '😃' }}</button>
+                <img *ngIf="mostrarAgregarTarjeta" style="width: 32px;" src="assets/img/tarjeta.png" alt="Emoji de Tarjeta"> 
+            </div>
+        </div>        
+          
+          <div class="account-card">
+            <img src="assets/img/banco.png" alt="Banco Icon">
+            <h3>{{ tarjetaActiva.banco }}</h3>
+              <p class="balance">Saldo: ${{ hideBalance ? hideText(tarjetaActiva.saldo.toString()) : tarjetaActiva.saldo }}</p>
+              <h3>{{ tarjetaActiva.numeroTarjeta| formatearTarjeta }}</h3>
+          </div>
+     
+        </div>
+      </div>
+
+    <div class="title-container">       
+        <h3>Enviar Dinero</h3>       
+    </div>      
+  
+  <div class="account-card agregar-tarjeta" >
+    <!-- Mostrar mensaje de error proveniente del back java si se produce un error 
+    <div class="error-message" *ngIf="enviarDineroError==true">{{ camposEnviarDineroError }}</div>-->
+    <!-- Mostrar mensaje de éxito si no se produce ningún error 
+    <div class="success-message" *ngIf="enviarDineroError==false">Dinero enviado exitosamente</div>-->
+    <input type="text" placeholder="Tu número de tarjeta" [(ngModel)]="numeroTarjetaOrigenActiva" [ngModel]="numeroTarjetaOrigenActiva | formatearTarjeta">
+   
+    <input type="text" placeholder="Ingresa CBU o alias" [(ngModel)]="numeroTarjetaDestino" > 
+    <input type="number" placeholder="Monto" [(ngModel)]="monto">     
+  </div>  
+  
+      
+  <div class="action-buttons">
+    <button class="send-button"(click)="navegarInicio()" >Volver</button>
+    <button class="pay-button" (click)="validarDatosYMostrarModal()" >Enviar</button>    
+  </div>
+  
+  
+    <div class="promotions-carousel">
+        <div class="promotion-slide">
+            <img src="assets/img/promo.jpeg" alt="Promoción 1">
+        </div>       
+    </div>
+    
+   
+</main>
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <!-- Contenido del modal -->
+  <div class="modal-content">
+    
+    <span class="close" (click)="cerrarModal()">&times;</span>
+    <h4>Confirmar Transacción</h4> 
+    <p>Envías dinero a: {{ userCardInfo?.nombre }}</p> 
+    <p>Banco: {{ userCardInfo?.banco }}</p> 
+    <p>CBU: {{numeroTarjetaDestino }}</p>    
+    <p>Monto: ${{monto }}</p>    
+
+    <div class="toggle-switch">
+      <input class="input-enviar-dinero" type="checkbox" id="toggle" (change)="enviarDinero()" >
+      <label class="slider" for="toggle"></label>
+    </div>
+    <!-- Botones -->
+    <div >      
+      <button class="send-button" (click)="cerrarModal()">Cancelar</button>
+    </div>
+  </div>
+  
+</div>
+
+

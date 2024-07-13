@@ -1,0 +1,75 @@
+<main>
+  <div class="title-container">
+    <h3 *ngIf="!mostrarAgregarTarjeta">Tus tarjetas</h3>
+    <h3 *ngIf="mostrarAgregarTarjeta">Agregar Tarjeta</h3>
+    <div class="balance-toggle">
+      <button *ngIf="!mostrarAgregarTarjeta" id="toggle-button" (click)="toggleVisibility()">{{ hideBalance ? '😑' : '😃' }}</button>
+      <img *ngIf="mostrarAgregarTarjeta" style="width: 32px;" src="assets/img/tarjeta.png" alt="Emoji de Tarjeta">
+    </div>
+  </div>
+
+  <!-- Contenedor de tarjetas -->
+  <div class="tarjetas-container">
+    <div class="card-container">
+     <!-- Lista de tarjetas -->
+<div class="tarjetas-lista" *ngIf="!mostrarAgregarTarjeta">
+  <div *ngFor="let tarjeta of tarjetaInfoByIdUser" class="account-card" [ngClass]="{'active': tarjeta === tarjetaActiva}" (click)="seleccionarTarjeta(tarjeta)">
+    <img src="assets/img/banco.png" alt="Banco Icon">
+    <div class="card-info">
+      <h5 class="banco">{{ tarjeta.banco }}</h5>
+      <h5 class="balance">Saldo: ${{ hideBalance ? hideText(tarjeta.saldo.toString()) : tarjeta.saldo }}</h5>
+    </div>
+  </div>
+</div>
+
+      <!-- Tarjeta de agregar tarjeta -->
+      <div class="account-card agregar-tarjeta-card" *ngIf="!mostrarAgregarTarjeta" (click)="mostrarAgregarTarjeta = true">
+        <img src="assets/img/tarjeta.png" alt="Agregar Tarjeta Icon">
+        <h5>Agregar Tarjeta</h5>
+      </div>
+    </div>
+
+    <div class="action-buttons" *ngIf="!mostrarAgregarTarjeta">
+      <button class="send-button" (click)="navegarEnviarDinero()">Enviar</button>
+      <button class="pay-button">Pagar</button>
+    </div>
+
+    <!-- Formulario para agregar tarjeta -->
+    <div class="account-card agregar-tarjeta" *ngIf="mostrarAgregarTarjeta">
+      <!-- Mostrar mensaje de error proveniente del back java si se produce un error -->
+      <div class="error-message" *ngIf="tarjetaError == true">{{ camposTarjetaError }}</div>
+      <!-- Mostrar mensaje de éxito si no se produce ningún error -->
+      <div class="success-message" *ngIf="tarjetaError == false">Tarjeta vinculada exitosamente</div>
+      <input type="text" placeholder="Número de Tarjeta" [(ngModel)]="numeroTarjeta">
+      <input type="text" placeholder="Nombre del banco" [(ngModel)]="banco">
+      <div class="action-buttons">
+        <button style="background-color: rgb(53, 53, 235) !important;" class="send-button" (click)="volverInicio()">Volver</button>
+        <button class="pay-button" (click)="agregarTarjeta(userId)">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="promotions-carousel">
+    <div class="promotion-slide">
+      <img src="assets/img/promo.jpeg" alt="Promoción 1">
+    </div>
+  </div>
+
+  <div class="transaction-history" [ngClass]="{'scrollable': mostrarTodasTransacciones}">
+    <h4>Historial de Transacciones</h4>
+    <ul>
+      <li *ngFor="let transaccion of (mostrarTodasTransacciones ? transacciones : transacciones.slice(0, 2))">
+        <div class="transaction-details">
+          <div>
+            <span class="username">{{ transaccion.tipoTransaccion === 'Dinero enviado' ? transaccion.nombreUsuarioDestino : transaccion.nombreUsuarioOrigen }}</span>
+            <span class="amount"> ${{ transaccion.monto }}</span>
+          </div>
+          <div>
+            <span>{{ transaccion.tipoTransaccion }} - {{ transaccion.fecha | date:'dd/MM/yyyy' }}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="ver-mas" *ngIf="!mostrarTodasTransacciones && transacciones.length > 2" (click)="verMas()">Ver más</div>
+  </div>
+</main>

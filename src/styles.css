@@ -1,0 +1,16 @@
+@import 'ngx-toastr/toastr';
+
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Otros estilos */
+.toast-center {
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    z-index: 1060; /* Asegúrate de que tenga un índice z alto para estar por encima de otros elementos */
+  }
+  

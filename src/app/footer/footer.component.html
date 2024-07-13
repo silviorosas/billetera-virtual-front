@@ -1,0 +1,15 @@
+<div class="footer-card">
+    <nav class="footer-menu">
+      <a href="#"><img src="assets/img/casa.png" alt="Home"></a>
+      <a href="#"><img src="assets/img/regalo.png" alt="Promociones"></a>
+      <a href="#"><img src="assets/img/billetera.png" alt="Otra Billetera"></a>
+      <div class="menu-container" (click)="toggleMenu($event)">
+        <a ><img src="assets/img/menu.png" alt="Menú"></a>
+        <div class="dropdown-menu" *ngIf="isMenuVisible">
+          <a  (click)="logout()">Cerrar sesión</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  
+

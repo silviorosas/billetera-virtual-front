@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-content">
+    <div class="title">
+      <h3>Deco de QR <span class="emoji">📷</span></h3>
+    </div>
+    <div class="instructions">
+      <h4 style="text-align: center;">Instrucciones:</h4>
+      <ul>
+        <li>Toma una foto del QR.</li>
+        <li>Da click en Cargar QR.</li>
+        <li>Click en Decodificar QR.</li>
+        <li>Realiza el pago.</li>
+      </ul>
+    </div>
+    <div class="file-selector">
+      <label for="fileInput" [class]="selectedFile ? 'selected' : ''">{{ selectedFile ? selectedFile.name : 'Cargar QR' }}</label>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)">
+    </div>
+    <div class="button-container">
+      <button class="btn-decode" (click)="onSubmit()">Decodificar QR</button>
+    </div>
+    <div *ngIf="qrText" class="result">
+      <p>QR decodificado:</p>
+      <p>{{ qrText }}</p>
+    </div>
+  </div>
+</div>

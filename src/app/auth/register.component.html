@@ -1,0 +1,42 @@
+<header>
+    <div class="user-info">
+        <span class="username">Billetera Bien Cuyana </span>
+        <img style="margin-left: 2px;" src="assets/img/tarjeta.png" alt="user">
+    </div>   
+</header>
+<main>
+   <!--spinner
+    <div class="spinner-overlay" *ngIf="loading">
+      <div class="spinner"></div>
+    </div>-->
+
+    <div class="title-container">       
+        <h3>Registrate</h3>       
+    </div>      
+    <form #registerForm="ngForm" (ngSubmit)="register()" class="register-form">
+        <div class="account-card agregar-tarjeta">      
+          <input type="text" placeholder="Ingresa tu nombre" [(ngModel)]="registerDto.nombre" name="nombre" required> 
+          <input type="text" placeholder="Ingresa tu apellido" [(ngModel)]="registerDto.apellido" name="apellido" required>  
+          <input type="email" placeholder="Ingresa tu email" [(ngModel)]="registerDto.email" name="email" required> 
+          <input type="password" placeholder="Ingresa tu password" [(ngModel)]="registerDto.password" name="password" required>        
+        </div> 
+            
+        <div class="action-buttons">
+          <button class="send-button" (click)="navegarInicio()">Login</button>
+          <button type="submit" class="pay-button" [disabled]="!registerForm.form.valid">Enviar</button>    
+        </div> 
+    </form>
+      
+  
+  
+    <div class="promotions-carousel">
+        <div class="promotion-slide">
+            <img src="assets/img/promo.jpeg" alt="Promoción 1">
+        </div>       
+    </div>
+    
+   
+
+
+
+

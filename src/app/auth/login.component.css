@@ -1,0 +1,294 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Roboto', sans-serif;
+    margin: 20px;
+    background-color: rgb(238, 238, 232);
+    color: rgb(61, 59, 59);
+    margin: 0; /* Asegura que no haya margen en el cuerpo */
+    padding-bottom: 60px; /* Agrega espacio en la parte inferior del cuerpo igual a la altura del pie de página */
+    position: relative;
+    min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% de la altura de la ventana */
+    margin-bottom: 60px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.username {
+    margin-left: 10px;
+}
+
+.greeting-emoji {
+    font-size: 1.5rem;
+}
+
+.balance-toggle {
+    display: flex;
+    align-items: center;
+}
+
+.balance-toggle span {
+    margin-right: 10px;
+}
+
+.balance-toggle button {
+    font-size: 20px; /* Ajusta el tamaño del texto */
+    width: 30px; /* Ajusta el ancho del botón */
+    height: 30px; /* Ajusta la altura del botón */
+    border-radius: 20%; /* Hace que el botón sea redondo */
+}
+
+
+/* Flexbox styles for the title container */
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px; /* Adjust spacing as needed */
+}
+
+
+.account-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.account-card img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+/* Estilos para la tarjeta "Agregar Tarjeta" */
+.agregar-tarjeta {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center; /* Centra el contenido horizontalmente */
+}
+
+.agregar-tarjeta p {
+  color: rgb(62, 62, 190); /* Texto azul */
+  font-weight: bold; /* Texto en negrita */
+  font-size: 18px;
+}
+
+.agregar-tarjeta button {
+  background-color: rgb(63, 119, 63); /* Fondo verde */
+  color: white; /* Texto blanco */
+  border: none;
+  border-radius: 6px;
+  padding: 10px 14px;
+  cursor: pointer;
+  margin-top: 10px; /* Espacio superior */
+  font-size: 10px; /* Tamaño de letra */
+}
+
+/* Estilos para los inputs */
+.agregar-tarjeta input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.agregar-tarjeta input:focus {
+    border-color: #007bff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+
+.balance {
+    font-weight: bold;
+}
+
+.action-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.send-button,
+.pay-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 150px; /* Puedes ajustar el ancho según sea necesario */
+    margin: 0 20px; /* Añade margen entre los botones */
+}
+
+
+.send-button {
+    background-color: rgb(53, 53, 235);
+    color: white;
+    margin-right: 10px;
+
+}
+
+.pay-button {
+    background-color: rgb(36, 116, 36);
+    color: white;
+}
+
+.promotions-carousel {
+    display: flex;
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en dispositivos móviles */
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.promotion-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente la imagen */
+    align-items: center; /* Centra verticalmente la imagen */
+    margin-right: 5px; /* Espacio entre las diapositivas */
+}
+
+.promotion-slide img {
+    max-width: 80%;
+    height: auto;
+}
+
+
+
+.username {
+    font-weight: bold;
+}
+
+.amount {
+    color: rgb(56, 136, 56);
+}
+
+/*boton ver mas*/
+.ver-mas {
+    color: rgb(2, 102, 2); /* Color verde */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el texto */
+    margin: 0 auto; /* Centra horizontalmente */
+    display: block; /* Cambiado a block para ocupar toda la anchura disponible */
+    text-align: center; /* Centra el texto horizontalmente */
+    font-size: 18px;
+  }
+  
+  .ver-mas:hover {
+    text-decoration: underline; /* Subraya el texto al pasar el ratón */
+  }
+
+  /*error mensaje input agregar tarjeta*/
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 2px;
+    background-color: rgb(214, 182, 182);   
+}
+
+/*mensaje tarjeta agregada exitosamente*/
+    .success-message{
+    color: green;
+    font-size: 14px;
+    margin-top: 2px;
+    background-color: rgb(150, 189, 150);  
+    }
+
+
+
+  /*Spinner*/
+  .spinner-overlay {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .spinner {
+    border: 8px solid #c9c3c3;
+    border-top: 8px solid #2196F3;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  
+  
+   
+
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+    /* Adjustments for smaller screens */
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .user-info {
+        margin-bottom: 10px;
+    }
+    .balance-toggle {
+        margin-top: 10px;
+    }
+    .account-card {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .action-buttons {
+        display: flex;        
+        align-items: center;
+    }
+    .send-button,
+    .pay-button {
+        width: 90%;
+        margin-bottom: 10px;
+        width: 100px; /* Puedes ajustar el ancho según sea necesario */
+        margin: 0 10px; /* Añade margen entre los botones */
+    }
+
+    /*posiciona el boton togogle swith arriba*/
+    input:checked + .slider:before {
+        transform: translateY(-594%); /* Desplazar el botón hacia arriba -560 responsive */
+      }
+   
+}
